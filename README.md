@@ -22,8 +22,8 @@ player_reid/
 │   └── player_mapping.json       # (Optional JSON match dictionary)
 └── runs/
 └── detect/
-    ├── predict_broadcast/        # YOLOv7 detection outputs for broadcast crops
-    └── predict_tacticam/         # YOLOv7 detection outputs for tacticam crops
+    ├── predict_broadcast/        # YOLOv11 detection outputs for broadcast crops
+    └── predict_tacticam/         # YOLOv11 detection outputs for tacticam crops
 ```
 
 ---
@@ -39,11 +39,11 @@ cd player_reid
 
 ### 2. Clone YOLOv7 (for player detection)
 
-We use YOLOv7 to detect and crop players before feature extraction.
+We use YOLOv11 to detect and crop players before feature extraction.
 
 ```bash
 git clone https://github.com/WongKinYiu/yolov7.git
-cd yolov7
+cd yolov11
 pip install -r requirements.txt
 cd ..
 ```
@@ -67,7 +67,7 @@ pip install torch torchvision pillow numpy tqdm scikit-learn pandas matplotlib o
 
 ### Step 1: Detect Players and Extract Crops using YOLOv7
 
-Run YOLOv7 detection separately on both videos to get cropped player images:
+Run YOLOv11 detection separately on both videos to get cropped player images:
 
 ```bash
 python yolov7/detect.py --weights yolov7.pt --conf 0.5 --source <broadcast_video_path> --save-crop --project runs/detect --name predict_broadcast --exist-ok
